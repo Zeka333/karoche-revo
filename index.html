@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+
+<html lang="uk">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Розклад 9-Б</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root{
+      --bg-deep-1: #0b0710;
+      --bg-deep-2: #0f1324;
+      --glass-bg: rgba(255,255,255,0.06);
+      --glass-strong: rgba(255,255,255,0.10);
+      --accent: #a5b4fc;
+      --accent-2: #7dd3fc;
+      --muted: rgba(229,231,235,0.65);
+      --text: #eaf0ff;
+      --border: rgba(255,255,255,0.08);
+      --glow: rgba(165,180,252,0.12);
+    }
+
+    /* Reset & base */
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0}
+    body{
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      color:var(--text);
+      overflow:hidden; /* no scroll */
+      background:
+        radial-gradient(800px 500px at 10% 20%, rgba(122,99,255,0.12) 0%, rgba(34,197,224,0.06) 18%, transparent 35%),
+        radial-gradient(700px 420px at 95% 80%, rgba(125,211,252,0.06) 0%, rgba(149,117,205,0.06) 22%, transparent 38%),
+        linear-gradient(180deg, var(--bg-deep-1) 0%, var(--bg-deep-2) 100%);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:32px;
+    }
+
+    /* Main glass panel */
+    .panel{
+      width: min(1120px, 96%);
+      max-height: calc(100vh - 64px);
+      border-radius: 24px;
+      padding: 28px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      border: 1px solid var(--border);
+      backdrop-filter: blur(30px) saturate(140%);
+      -webkit-backdrop-filter: blur(30px) saturate(140%);
+      box-shadow:
+        0 10px 40px rgba(2,6,23,0.6),
+        0 2px 20px rgba(0,0,0,0.6),
+        0 0 60px var(--glow);
+      position:relative;
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+      align-items:stretch;
+    }
+
+    /* soft top glow */
+    .panel::before{
+      content:"";
+      position:absolute;
+      inset: -1px;
+      border-radius:26px;
+      pointer-events:none;
+      box-shadow: 0 0 60px 8px rgba(125,117,205,0.03), 0 0 18px 2px rgba(125,211,252,0.02) inset;
+      mix-blend-mode: screen;
+    }
+
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .title{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+    h1{
+      margin:0;
+      font-size:22px;
+      letter-spacing:0.2px;
+      font-weight:700;
+      color:var(--text);
+    }
+    p.lead{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    /* search + small controls */
+    .controls{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-left:auto;
+    }
+    .search{
+      position:relative;
+    }
+    input[type="search"]{
+      width:260px;
+      padding:10px 14px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,0.06);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      color:var(--text);
+      outline:none;
+      font-size:14px;
+      box-shadow: 0 4px 18px rgba(2,6,23,0.35);
+      backdrop-filter: blur(6px);
+    }
+    input[type="search"]::placeholder{color:var(--muted)}
+
+    /* table area */
+    .table-wrap{
+      overflow:auto;
+      border-radius:14px;
+      padding:6px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+      border: 1px solid rgba(255,255,255,0.03);
+    }
+    table{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      min-width:980px;
+      table-layout:fixed;
+      font-size:14px;
+    }
+
+    thead th{
+      position:sticky;
+      top:0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.015));
+      color:var(--muted);
+      font-weight:600;
+      padding:12px 10px;
+      backdrop-filter: blur(6px);
+      border-bottom:1px solid rgba(255,255,255,0.04);
+      text-align:center;
+    }
+    tbody td{
+      padding:14px 10px;
+      vertical-align:middle;
+      text-align:center;
+      background: linear-gradient(180deg, rgba(255,255,255,0.00), rgba(255,255,255,0.00));
+      border-bottom:1px solid rgba(255,255,255,0.03);
+    }
+    tbody tr:nth-child(odd) td{
+      background: linear-gradient(180deg, rgba(255,255,255,0.012), rgba(255,255,255,0.00));
+    }
+    td.time{ color:var(--muted); width:120px; font-size:13px; text-align:right; padding-right:18px; }
+    a.subj{
+      color:var(--accent);
+      text-decoration:none;
+      font-weight:600;
+    }
+    a.subj
+
+    tbody tr{
+      
+      transform-origin:center;
+    }
+    tbody tr
+
+    /* small footer */
+    footer{
+      display:flex;
+      justify-content:center;
+      color:var(--muted);
+      font-size:13px;
+      padding-top:6px;
+    }
+
+    /* responsive */
+    @media (max-width:1000px){
+      table{ min-width:860px }
+      input[type="search"]{ width:200px }
+    }
+    @media (max-width:760px){
+      .panel{ padding:18px }
+      thead th, tbody td{ font-size:13px; padding:10px 8px }
+      input[type="search"]{ width:160px }
+    }
+  
+/* Лёгкая подсветка ссылок при наведении */
+a.subj {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+a.subj:hover {
+  color: #d6dcff;
+  text-shadow: 0 0 6px rgba(165, 180, 252, 0.6);
+}
+
+/* Поле поиска слева */
+header {
+  justify-content: flex-start;
+}
+
+
+/* Поле поиска справа */
+header {
+  justify-content: flex-end !important;
+}
+
+
+/* Поле поиска слева */
+header {
+  justify-content: flex-start !important;
+  gap: 0 !important;
+}
+.controls {
+  margin-left: 0 !important;
+}
+
+
+/* Інфо-блок про поточний урок (акуратно у верхньому лівому кутку) */
+#lessonStatus {
+  position: absolute;
+  top: 16px;
+  right: 24px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 10px 16px;
+  font-size: 14px;
+  color: var(--text);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 4px 18px rgba(2,6,23,0.35);
+  z-index: 10;
+}
+
+
+.ab-sep{
+  margin:4px 0;
+  height:1px;
+  background:rgba(255,255,255,0.25);
+  width:100%;
+}
+</style>
+<link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAKJ0lEQVR4nOWbXYgkVxXHf+dWdU/P9KR3Xc3mY9lNYjAfxA8CkWDUB/EDxAdFUBB9kWjAPPkWRIx591FEhBWCYFCIbxIfjCTRoIgYhKALWY35IrvZ3clmZmd2Z7r73uND3aq6VXW7u7p7JpHsCZOtuvfWPfece87/nFN9S5hC1lqNdggQ76mOySk2dlJ/fe42vGaRQGISmdDVpImCL8C4WLzEGgI2SnulzLsIP6+IYESk1lulfRP+/5VESIwp5DZh37teeABVrHOFnIUCrgrhc1LFeSUIXGXCB6SqVRe42khEkP3efVVF9eANypj92bu07cC6SPXwoaookCbJ0otqQ865fZmnlQJi+xm2qSpJkiDA6y//h7e2dkjSBEX9QKGIvm2TqEgeoKpYa1kfDDh+4qblEyTmsICStPqPKmIM25sX+fHJX/DHly5z8fxZnBthJCHPcETIFOKflaYJFY15lwaaMAjOKUlvjbXhmzz6o4c5dvwEY2sxjcnaUysFiF+0RnZPgVTgZ48+xq9OC3cfMnz9i/fR7fZwzmZAI1JYg9aEDQUO75VqcqhOWb+mz9PPPMMtN93DtUevwy4pPLS1gEqaWu6PqtJJU868/G+efmXIHYcN3/vKJ7hi+vzlz8/S6/Ww1gFKt7uCyRWRp6fq/5GAT8jQDxPPc2PnIodWuzz4wLcxSYKzdinhoa0CJNz48Cq73t7eYevCG3zgtmPccMttvPjqGe764IdJCxwQzp0/x97eHtVUvGpShR4C5eQdadph48IFnIJJEsZ2jJHlI8F8IFgvWDwQS7dHf+c1Xj11jlOnPsKH7v4ozllUHSAkScLTTz3Fpa0t0k6KulK6TFaJGVhJAsPhiMFgwNmzZ9na2mIwGGCtrSl0fmqdB2j+PymBzDml00k5fep5vnvy9wz3hhzZeJ6P3XsPYrJwmC9wbW0NkQzIjEgJLLnEdeXW+Sv0+2v8/bnncNbyyMM/ZP2a9QyEDxoEc9TWvKQtVOZNwDlGVln5+DfYfPNlHn/2Mdyt92HWBqhzIOA2NZPCkwRz5wyCy7KLDANEwFnLyvWfx5z+E+dff5XBnXcxGo8xItN0tw8KkKpFZm2BGYtgDOhoG+kfZnD0GJy4DV07BM5WhAmmnMGzZFqOdWinj5z7FyKtDHcmLZYINRyWbAfFgBuCOtxoFx12wWdsk95vqJRe1ZhbK3pA1IGkuPFwP3IgYN5EaIaf5lkfkK1cTCHdpMckH9tQkW+uKCTzd63lEMvA4GJxRAGV6s4FocJptuuiNMf4vyoaVIWPCVWFn9Lnl7WEVgooFiRUgEwnqL4A+GKMlNYjZYJTiilU9jK81TyD1ECB2pR8QU3MXw2GIacAKfEyBi8886iRKyLp4ty47Kd2qfWmzORN0sFonlOUA1Sqjy/qBwtWg1q7y7amAKzwfYAqpB06LzxFb28DOr1qOJRyWGHgAfLZ4ZDd2z8NvUERUSjyiBnUovJcoBr0MytI6A7ePCu5PZkw1lo6Vy5w95e/Cit91NnG1qlqdcHO0Vkf8N/f/ZoX37pA59gRGA3xdTGtomCLMe2qwdCfy5SwOibC04uWuXOnh+v2MSv9bCdr2JCPLVzGOej10c4aMjKRgqxmArEINStqsVQxpGiQFmsoutLQhKiCs9nuqwtCZjlHZdHqwFlEXR508qmIrSYqaAs3WTAR8guvI1GQ35a4kGnPqWZAps4nR0EGVAhfuoH6caouKkiu8FyFB5sKl1ypOmqsPyOp1Q0i0Olfg/TWUTetisvEUWfprB8i6XZxO5Z61lkdPW2m6TRTAdEI4HdeKsVNiQIBoCOqSJpg9/Z46be/RLv9zArqeW6l9MksQNIOmy+9QPr+z4G1VWEaYbNJbaxipgLiGZffpSmJUIiVRi3DOz7LfzY3ECdVBRWXNQUADC3m5ptIB0fBjqrs63SQIFgCjcbdwEuUm7368rQESYesDuiuH5mYU4QFrfrIAZLhgB15LAm2I5ort2ir0ZwY4AWvg1ee4pYDfWjzixbAjVE3LnVX251GZhsmlQu+8AiXN4nmxIBIyIoOLneqKB/ylxYVpdWmzfVbX3UdJ6a8Ua4va2kQzBcdc7t4KhS0hEAwyW8b4ydR1eVyl5n0SFubaV8OT4nF2Y1Wx2kzH9oX0pzX5JnncZhWCiiwJ/x9q56NRrLTuNKa91E3m0SeTxv/bkPzvRApuE5hH3Q1hW1rD9PHzTPLrLHtQVAjjfU29eFLJHtdXeuOvbutBoX4cqtPaRVMp6258WyTZlqAEILTRNj3wktxXTeBaYuuBAMN4/200dMp5pExao8BlRlrRZBW+33Ua4ayKSsqEp/aczFYmSXYvoKgNm58FVcHwGnP+TGxtlCiiUVNYBTKZCOJzj+D2oNg6Aa502qzK2Mcrja8mFFFTklnq24Y/yWo0dYCLdspYIbvQmAUU84HSV0HsftJz02bp0bz5B7tQDC/mMBIneKCXVSnvgaQiBNHljfJsSNu1sa/34ZEqHrf7Xbo+LNR6tSfCoE88hd/EzLiCi9q3qax/CFSDS5IC7wVlmIXDYJ1jmMnbubG5BKnNzc5dOS9uDTFCmAMgnqllCai6vsiUUJqgCBB+BBjwJioZU2K/TOCzwIKyP3Bc3TW0umtcf+XPsMPTj7Oxbu+gFzahiu7IHuIOpKVHiNXHnnqiDDe28NFkiWg8WNpUVSpw2gXe3kXOy5/dZ6EobOEh4XOCJXMVPxxlfGYe+/7JD85fJjfPPEkZ48o3cv/wF02XNnbY/vMK1zbUcZWSY2wYQ1rN5xgtdsF8hNkseVnnMp0I8Oa9RsT3nfdsUq2Gb66r7TN0MB8J0QC4evt6hxpGujTjcEkvPja6zz58Hd44Lhw0QqHE+Xnr1k+9chPufX4cT+uBTgUDBVMioI/JFVKnFtYfY3TaKHX4iGTnKkYYTQeZfgkBgVSI4wlwaUrjLCsra4wHI/QThdLggJWpfqesP62qUEG7JjMcupVwvzYuPQxq3KdgjEJSZJgjBQ4pc6xkggdozzxwjlSdfRSUzVfvxAjmcEX/0ntz7uLiFn6cFROc4HgzBKlsgXZRWISdq7scvLMCm/c+zU2//kHLu9sF4edY+4UY5ZjTnv+7Wi+8wGTGEduckteE8tfRwNu/+ZDfP/Bb3Hn/Q/xN/ceevhfemPpdMTn6jVJNO1dwCj2/bh8ZXIRruzusrV1ieuvO8pwOKTb7XJ+Y4P+6iqrvVXyH9GAuBCtqsgl1njQX4vkpj4ejzGJwTlHmmSe5yIHqGbRIkg/db6343OZ+mHGaYcbQ+EWtOq56G34ZCYMVz6lnYLgId4cnPBS1DEC+M/I6kjzLiafzqtzmQUUIeRqIO9bAtlh67z9qrACKSsL/5lPeeA++5z0oCHnHaZgc5Mk+5i6AoKJMSKN17nLkNSyqHdWwSLe7yd9OwxgjJH9/e7Pa6Dt2b4DItUsF0nStLKK/wFL0HdD4c/ckQAAAABJRU5ErkJggg==" rel="icon" type="image/png"/>
+</head>
+<body>
+<main aria-label="Розклад 9-Б - Glass Ultra" class="panel" role="main">
+<div id="lessonStatus">⏳ Завантаження...</div>
+<header>
+<div aria-hidden="false" class="controls" style="margin-left:0;">
+<div class="search">
+<input aria-label="Пошук предмету" id="q" placeholder="Пошук" type="search"/>
+</div>
+</div>
+</header>
+<div aria-label="Таблиця розкладу" class="table-wrap" role="region">
+<table aria-describedby="desc" id="scheduleTable">
+<thead>
+<tr>
+<th style="width:48px">№</th>
+<th>Понеділок</th>
+<th>Вівторок</th>
+<th>Середа</th>
+<th>Четвер</th>
+<th>П’ятниця</th>
+<th style="width:140px">Час</th>
+</tr>
+</thead>
+<tbody><tr><td>1</td><td><a class="subj" href="https://us04web.zoom.us/j/72121972480?pwd=bYknzEzgIpp5ePYanyXFxTh4B7ZJi5.1" rel="noopener" target="_blank">Історія України</a></td><td><a class="subj" href="https://us04web.zoom.us/j/79568182489?pwd=0SF8VDOXNBpce3G2ASIboN29rE3j6C.1" rel="noopener" target="_blank">Українська література</a></td><td><a class="subj" href="https://us05web.zoom.us/j/81801385431?pwd=MkAjulBbqEKgjxKbIjqvCd1eeMyFar.1" rel="noopener" target="_blank">Алгебра</a></td><td><a class="subj" href="https://us05web.zoom.us/j/82543986620?pwd=87ojkLhsshgy0pAfUs08wDanfJYcxJ.1" rel="noopener" target="_blank">Громадянська освіта</a><div class="ab-sep"></div><a class="subj" href="https://us04web.zoom.us/j/72121972480?pwd=bYknzEzgIpp5ePYanyXFxTh4B7ZJi5.1" rel="noopener" target="_blank">Правознавство</a></td><td><a class="subj" href="https://us05web.zoom.us/j/81801385431?pwd=MkAjulBbqEKgjxKbIjqvCd1eeMyFar.1" rel="noopener" target="_blank">Геометрія</a></td><td class="time">8:30–9:15</td></tr><tr><td>2</td><td><a class="subj" href="https://us05web.zoom.us/j/84366032722?pwd=4kzweBqKe8Z5gagCfH3ODOsrf6tbby.1" rel="noopener" target="_blank">Мистецтво</a></td><td><a class="subj" href="https://us05web.zoom.us/j/81865127371?pwd=buBe1aGMfjdKemptTsIpxFpQqoobl1.1" rel="noopener" target="_blank">Фізика</a></td><td><a class="subj" href="https://us05web.zoom.us/j/81801385431?pwd=MkAjulBbqEKgjxKbIjqvCd1eeMyFar.1" rel="noopener" target="_blank">Алгебра</a></td><td><a class="subj" href="https://us04web.zoom.us/j/71454646085?pwd=Hx6o0AvEasC2bHwFzFWFrEE8pD9ajI.1" rel="noopener" target="_blank">Зарубіжна література</a></td><td><a class="subj" href="https://us05web.zoom.us/j/81801385431?pwd=MkAjulBbqEKgjxKbIjqvCd1eeMyFar.1" rel="noopener" target="_blank">Геометрія</a></td><td class="time">9:25–10:10</td></tr><tr><td>3</td><td><a class="subj" href="https://us04web.zoom.us/j/77388111520?pwd=6idoqibtk4ZUHeNyaAfKCIu6dXzYw0.1" rel="noopener" target="_blank">Українська мова</a></td><td><a class="subj" href="https://us04web.zoom.us/j/77388111520?pwd=6idoqibtk4ZUHeNyaAfKCIu6dXzYw0.1" rel="noopener" target="_blank">Українська мова</a></td><td><a class="subj" href="https://us04web.zoom.us/j/77388111520?pwd=6idoqibtk4ZUHeNyaAfKCIu6dXzYw0.1" rel="noopener" target="_blank">Українська мова</a></td><td><a class="subj" href="https://us05web.zoom.us/j/81865127371?pwd=buBe1aGMfjdKemptTsIpxFpQqoobl1.1" rel="noopener" target="_blank">Фізика</a></td><td><a class="subj" href="https://us05web.zoom.us/j/82185808004?pwd=T3V0Zmd5TmpsWU9EYTg2eDBDaUpjZz09" rel="noopener" target="_blank">Географія</a></td><td class="time">10:20–11:05</td></tr><tr><td>4</td><td><a class="subj" href="https://us04web.zoom.us/j/76416155697?pwd=VaGRglKs35neqdMERou4BMrJYcGYN1.1" rel="noopener" target="_blank">Біологія</a></td><td><a class="subj" href="https://us05web.zoom.us/j/81801385431?pwd=MkAjulBbqEKgjxKbIjqvCd1eeMyFar.1" rel="noopener" target="_blank">Геометрія</a></td><td><a class="subj" href="https://us04web.zoom.us/j/72121972480?pwd=bYknzEzgIpp5ePYanyXFxTh4B7ZJi5.1" rel="noopener" target="_blank">Всесвітня історія</a></td><td><a class="subj" href="https://us04web.zoom.us/j/72479349277?pwd=aMjDcVi3zzAmrERKhcLwvJH7Uufpyy.1" rel="noopener" target="_blank">Інформатика</a></td><td><a class="subj" href="https://us04web.zoom.us/j/73604649199?pwd=vbbqPJtCaVOrtu9bkjavGLFCzahn0K.1" rel="noopener" target="_blank">Фізична культура</a></td><td class="time">11:30–12:15</td></tr><tr><td>5</td><td><a class="subj" href="https://us05web.zoom.us/j/81801385431?pwd=MkAjulBbqEKgjxKbIjqvCd1eeMyFar.1" rel="noopener" target="_blank">Алгебра</a></td><td><a class="subj" href="https://us05web.zoom.us/j/81801385431?pwd=MkAjulBbqEKgjxKbIjqvCd1eeMyFar.1" rel="noopener" target="_blank">Геометрія</a></td><td><a class="subj" href="https://us05web.zoom.us/j/81801385431?pwd=MkAjulBbqEKgjxKbIjqvCd1eeMyFar.1" rel="noopener" target="_blank">Алгебра</a></td><td><a class="subj" href="https://us04web.zoom.us/j/72850453854?pwd=8irLSalHJVetdZ56G9fhyc6EYIKkZQ.1" rel="noopener" target="_blank">Фінансова грамотність</a><div class="ab-sep"></div><a class="subj" href="https://us04web.zoom.us/j/72479349277?pwd=aMjDcVi3zzAmrERKhcLwvJH7Uufpyy.1" rel="noopener" target="_blank">Інформатика</a></td><td><a class="subj" href="https://us04web.zoom.us/j/5780308192?pwd=d7EWOI660NgwBZA5HyBQd58b7yB9ka.1" rel="noopener" target="_blank">Основи здоров’я</a></td><td class="time">12:25–13:10</td></tr><tr><td>6</td><td><a class="subj" href="https://us05web.zoom.us/j/81801385431?pwd=MkAjulBbqEKgjxKbIjqvCd1eeMyFar.1" rel="noopener" target="_blank">Алгебра</a></td><td><a class="subj" href="https://us04web.zoom.us/j/72121972480?pwd=bYknzEzgIpp5ePYanyXFxTh4B7ZJi5.1" rel="noopener" target="_blank">Історія України</a></td><td><a class="subj" href="https://us04web.zoom.us/j/4669228785?pwd=ZHF6OWdDM0lHR0dzUXlldGNUbXZKUT09" rel="noopener" target="_blank">Англійська мова</a></td><td><a class="subj" href="https://us04web.zoom.us/j/76416155697?pwd=VaGRglKs35neqdMERou4BMrJYcGYN1.1" rel="noopener" target="_blank">Біологія</a></td><td><a class="subj" href="https://us04web.zoom.us/j/74430308974?pwd=axiQvzUl3QmJ4qnNXGqk8YJyVdL0bs.1" rel="noopener" target="_blank">Хімія</a></td><td class="time">13:20–14:05</td></tr><tr><td>7</td><td><a class="subj" href="https://us04web.zoom.us/j/4669228785?pwd=ZHF6OWdDM0lHR0dzUXlldGNUbXZKUT09" rel="noopener" target="_blank">Англійська мова</a></td><td><a class="subj" href="https://us04web.zoom.us/j/4669228785?pwd=ZHF6OWdDM0lHR0dzUXlldGNUbXZKUT09" rel="noopener" target="_blank">Англійська мова</a></td><td><a class="subj" href="https://us04web.zoom.us/j/71454646085?pwd=Hx6o0AvEasC2bHwFzFWFrEE8pD9ajI.1" rel="noopener" target="_blank">Зарубіжна література</a></td><td><a class="subj" href="https://us04web.zoom.us/j/74430308974?pwd=axiQvzUl3QmJ4qnNXGqk8YJyVdL0bs.1" rel="noopener" target="_blank">Хімія</a></td><td><a class="subj" href="https://us04web.zoom.us/j/79568182489?pwd=0SF8VDOXNBpce3G2ASIboN29rE3j6C.1" rel="noopener" target="_blank">Українська література</a></td><td class="time">14:15–15:00</td></tr><tr><td>8</td><td></td><td></td><td></td><td><a class="subj" href="https://us05web.zoom.us/j/4629163215?pwd=ZVpZa2NlY0hrZkZMbmdZWU1VcW10dz09" rel="noopener" target="_blank">Технології</a></td><td></td><td class="time">15:10–15:55</td></tr></tbody>
+</table>
+</div>
+</main>
+<script>
+    // Search filter
+    const q = document.getElementById('q');
+    const tbody = document.querySelector('#scheduleTable tbody');
+
+    q.addEventListener('input', ()=>{
+      const term = q.value.trim().toLowerCase();
+      for(const tr of tbody.rows){
+        let show = false;
+        for(const td of tr.cells){
+          if(td.innerText.toLowerCase().includes(term)) show = true;
+        }
+        tr.style.display = show ? '' : 'none';
+      }
+    });
+
+    // Make sure panel fits nicely on small screens: allow small internal scroll if needed
+    (function adjustPanel(){
+      const panel = document.querySelector('.panel');
+      // If content is higher than viewport, enable internal scroll
+      if(panel.scrollHeight > window.innerHeight - 48){
+        panel.style.maxHeight = (window.innerHeight - 48) + 'px';
+        panel.style.overflow = 'auto';
+      }
+    })();
+  </script>
+<script>const schedule = {
+  1: [
+    {subject: "Історія України", time: "8:30–9:15"},
+    {subject: "Мистецтво", time: "9:25–10:10"},
+    {subject: "Українська мова", time: "10:20–11:05"},
+    {subject: "Біологія", time: "11:30–12:15"},
+    {subject: "Алгебра", time: "12:25–13:10"},
+    {subject: "Алгебра", time: "13:20–14:05"},
+    {subject: "Англійська мова", time: "14:15–15:00"},
+  ],
+  2: [
+    {subject: "Українська література", time: "8:30–9:15"},
+    {subject: "Фізика", time: "9:25–10:10"},
+    {subject: "Українська мова", time: "10:20–11:05"},
+    {subject: "Геометрія", time: "11:30–12:15"},
+    {subject: "Геометрія", time: "12:25–13:10"},
+    {subject: "Історія України", time: "13:20–14:05"},
+    {subject: "Англійська мова", time: "14:15–15:00"},
+  ],
+  3: [
+    {subject: "Алгебра", time: "8:30–9:15"},
+    {subject: "Алгебра", time: "9:25–10:10"},
+    {subject: "Українська мова", time: "10:20–11:05"},
+    {subject: "Всесвітня історія", time: "11:30–12:15"},
+    {subject: "Алгебра", time: "12:25–13:10"},
+    {subject: "Англійська мова", time: "13:20–14:05"},
+    {subject: "Зарубіжна література", time: "14:15–15:00"},
+  ],
+  4: [
+    {subject: "Громадянська освіта / Правознавство", time: "8:30–9:15"},
+    {subject: "Зарубіжна література", time: "9:25–10:10"},
+    {subject: "Фізика", time: "10:20–11:05"},
+    {subject: "Інформатика", time: "11:30–12:15"},
+    {subject: "Фінансова грамотність / Інформатика", time: "12:25–13:10"},
+    {subject: "Біологія", time: "13:20–14:05"},
+    {subject: "Хімія", time: "14:15–15:00"},
+    {subject: "Технології", time: "15:10–15:55"},
+  ],
+  5: [
+    {subject: "Геометрія", time: "8:30–9:15"},
+    {subject: "Геометрія", time: "9:25–10:10"},
+    {subject: "Географія", time: "10:20–11:05"},
+    {subject: "Фізична культура", time: "11:30–12:15"},
+    {subject: "Основи здоров’я", time: "12:25–13:10"},
+    {subject: "Хімія", time: "13:20–14:05"},
+    {subject: "Українська література", time: "14:15–15:00"},
+  ],
+};
+
+
+function parseTime(t) {
+  const [h, m] = t.split(':').map(Number);
+  return h * 60 + m;
+}
+
+function updateLessonStatus() {
+  const now = new Date();
+  const day = now.getDay();
+  const mins = now.getHours() * 60 + now.getMinutes();
+  const el = document.getElementById("lessonStatus");
+
+  if (day < 1 || day > 5) {
+    el.textContent = "🎉 Сьогодні вихідний!";
+    return;
+  }
+
+  const today = schedule[day];
+  let current = null, next = null;
+
+  for (let i = 0; i < today.length; i++) {
+    const [start, end] = today[i].time.split('–').map(parseTime);
+    if (mins >= start && mins <= end) current = today[i];
+    if (mins < start && !next) next = today[i];
+  }
+
+  if (current) {
+    el.textContent = `🟢 Зараз іде: ${current.subject} (${current.time})`;
+  } else if (next) {
+    el.textContent = `⏳ Наступний: ${next.subject} (${next.time})`;
+  } else {
+    el.textContent = "✅ Уроки сьогодні закінчились!";
+  }
+}
+
+updateLessonStatus();
+setInterval(updateLessonStatus, 60000);
+</script>
+</body>
+</html>
